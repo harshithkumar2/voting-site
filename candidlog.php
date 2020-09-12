@@ -1,98 +1,91 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <title>Candidate Login</title>
-  <meta charset="utf-8">
-  <link rel="icon" href="photos/login.png" type="image/x-icon" />
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-  <style>
-.heading{
-    color:black;
-   
-    text-align:center;
-    font-size:32px;
-    font-weight:bold;
-    font-style:oblique;
-    font-family:Helvetica Narrow, sans-serif;
-    
-    text-shadow:1px 1px black;
-}
-label{
+<title>Candidate Login</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<style>
+.card-header{
     font-size:20px;
-    font-style:oblique;
     font-weight:bold;
-    color:black;
    
 }
-::placeholder{
-   
-   font-size:15px;
-   font-style:bold;
+.login-form{
+    padding-top:130px;
 }
-
-  </style>
-  </head>
-<body style="background:url(photos/homes.jpg)no-repeat;background-position:center;background-size:cover;">
-
-<form action="includes/candidlogs.inc.php" method="POST">
-
-<div class="container" style="margin-top:100px">
-<div class="row">
-        <div class="col-sm-12">
-            <h1 class="heading">Candidate login </h1>   
-         <div style="text-align:center"><img src="photos/logo1.png" style="max-width:60px;border-radius:30px;background-color:blue;"></div>
-       </div>
-    </div>
- <hr style="border-bottom:solid 2.5px black;width:400px;box-shadow:1px 3px 3px black">
-            <?php
+.card{
+    border:solid 1px #c7d3d4;
+    box-shadow:  -1px 3px 10px 10px  black;
+  
+}
+.card-header{
+    border-bottom:solid 1px #c7d3d4;
+    background-color:#c7d3d4;
+}
+.error{
+    color:red;
+    text-align:center;
+    font-weight:bold;
+    font-size:13px;
+}
+</style>
+</head>
+<body style="background-color:#603f83">
+<main class="login-form">
+<div class="container">
+        <div class="row justify-content-center">
+            <div class="col-sm-4">
+                <div class="card">
+                    <div class="card-header">Candidate Login</div>
+                    <div class="card-body">
+                    <?php
             if(isset($_GET['error']))
             {
                 if($_GET['error']=="emptyfeilds")
                 {
-                    echo '<p style="color:red;font-weight:bolder;text-align:center;font-size:20px;font-style:italic;">All Fields Are Empty! </p>';
+                    echo '<div class="alert alert-danger" role="alert">
+                    <a href="#" class="alert-link">Empty Fields!</a>
+                      </div>';
                 }
                 else if($_GET['error']=="usernameorpasswordiswrong")
                 {
-                    echo '<p style="color:red;font-weight:bolder;text-align:center;font-size:20px;font-style:italic;">Name Or Password Is Wrong ! </p>';
+                    echo '<div class="alert alert-danger" role="alert">
+                    <a href="#" class="alert-link">Name Or Password Is Wrong !!</a>
+                      </div>';
                 }
+
             }
-                ?>
-        </div>
-    </div>
+            ?>
+                    <form action="includes/candidlogs.inc.php" class="form-horizontal" method="POST">
+                  
 <br>
-
-<div class="d-flex justify-content-center">
-<div class="row">
-<div class="col-sm-12">
-<div style="text-align:center"><img src="photos/user.png" style="margin-bottom:5px"></div>
-           <input type="text" class="form-control" placeholder=" Registered User Name" name="nam"> </div>
+                        
+                        <div style="margin-bottom: 25px" class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+                        <input type="text" class="form-control" placeholder=" User Name" name="nam">
+                            
+                        </div>
+                                
+                        
+                        <div style="margin-bottom: 25px" class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                            <input type="password" class="form-control" placeholder="Enter Password Given" name="pass">
+                        </div>
+                       
+                        <div class="d-flex align-items-center">	
+                            <input type="submit" value="Login" class="btn btn-dark" name="yes" style="color:black;font-weight:bold;background-color:#c7d3d4">
+                        </div>
+                    
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
-<br>
-
-
-<div class="d-flex justify-content-center">
-<div class="row">
-<div class="col-sm-12">
-<div style="text-align:center"><img src="photos/pass.png" style="margin-bottom:5px"></div>
-           <input type="password" class="form-control" placeholder="Enter Password Given" name="pass"> </div>
-    </div>
 </div>
-    <br>
-
-    <div class="row">
-    <div class="col-sm-12">
-     <div style="text-align:center">
-        <input type="submit" value="Login" class="btn btn-dark" name="yes" style="width:150px;height:40px;border-radius:20px;font-style:italic;color:white;font-weight:bold">
-        </div>
-       
-     </div>
-</div>
-</div>
-        </form>
-  </body>
-  </html>
+</main>
+</body>
+</html>
